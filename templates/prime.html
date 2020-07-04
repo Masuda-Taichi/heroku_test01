@@ -7,6 +7,9 @@
 		<img src="static/img/thumb_02.png" alt="">
 		<img src="static/img/thumb_03.png" alt="">
 	</div>
+	<div class="id_hello">
+		<p>{{user_info[0]}}さん　こんにちは</p>
+	</div>
 	<div class="toppic">
 		<h1>WELCOME</h1>
 		<p>北海道で稀有な完全グルテンフリー・デイリーフリー工房です。
@@ -27,7 +30,7 @@
 		<div class="itemlist">
 			{% for item in comment_list %}
 			<li>
-				<form action="/purchase_page/{{item['id']}}" method="post">
+				<form action="/purchase_page_prime/{{item['id']}}" method="post">
 					<input type="hidden" name="id" value="{{item['id']}}">
 					<input type="image" src="/static/img/{{item['商品画像']}}" alt="送信する" class="purchase_img">
 				</form>
@@ -157,6 +160,7 @@
 			</ul>
 
 		</div>
+
 
 	</div>
 </section>
