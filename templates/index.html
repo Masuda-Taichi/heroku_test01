@@ -1,21 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="itemlist">
-	{% for item in comment_list %}
-	<li>
-		<form action="/purchase_page/{{item['id']}}" method="post">
-			<input type="hidden" name="id" value="{{item['id']}}">
-			<!-- <input type="image" src="/static/img/{{item['商品画像']}}" alt="送信する" class="purchase_img"> -->
-		</form>
-		<dl class="text">
-			<dt class="itemName">{{item["name"]}}</dt>
-			<!-- <dd class="price"><span class="font-bw">{{item["税抜き価格"]}}</span>円（税別）</dd> -->
-		</dl>
-	</li>
-	{% endfor %}
-
-</div>
+<p>hello</p>
 
 
 {% endblock %}
