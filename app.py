@@ -19,10 +19,10 @@ app.secret_key = 'sunabakoza'
 def index():
     conn = sqlite3.connect('niseco.db')
     c = conn.cursor()
-    c.execute("select id,商品名 from 商品")
+    c.execute("select id,name from syouhin")
     comment_list = []
     for row in c.fetchall():
-        comment_list.append({"id": row[0],"商品名": row[1]})
+        comment_list.append({"id": row[0],"name": row[1]})
 
     c.close()
     return render_template('index.html', comment_list = comment_list)
