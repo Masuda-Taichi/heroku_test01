@@ -1,10 +1,12 @@
 import os
 # splite3をimportする
 import sqlite3
+import math
 # flaskをimportしてflaskを使えるようにする
 from flask import Flask , render_template , request , redirect , session
 
 from datetime import datetime
+from tkinter import messagebox
 
 
 # appにFlaskを定義して使えるようにしています。Flask クラスのインスタンスを作って、 app という変数に代入しています。
