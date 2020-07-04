@@ -1,25 +1,31 @@
-
-
-
 import os
 # splite3をimportする
 import sqlite3
+import math
 # flaskをimportしてflaskを使えるようにする
 from flask import Flask , render_template , request , redirect , session
+
+from datetime import datetime
+from tkinter import messagebox
+
+
 # appにFlaskを定義して使えるようにしています。Flask クラスのインスタンスを作って、 app という変数に代入しています。
 app = Flask(__name__)
 
 # Flask では標準で Flask.secret_key を設定すると、sessionを使うことができます。この時、Flask では session の内容を署名付きで Cookie に保存します。
 app.secret_key = 'sunabakoza'
 
-from datetime import datetime
-
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    return render_template('index.html')
+    conn = sqlite3.connect('niseco.db')
+    c = conn.cursor()
+    c.execute("select id,商品名 from 商品")
+    comment_list = []
+    for row in c.fetchall():
+        comment_list.append({"id": row[0],"商品名": row[1]})
 
-
-
+    c.close()
+    return render_template('index.html', comment_list = comment_list)
 
 
 @app.errorhandler(403)
@@ -28,7 +34,7 @@ def mistake403(code):
 
 
 @app.errorhandler(404)
-def notfound(code):
+def notfound404(code):
     return "404だよ！！見つからないよ！！！"
 
 
