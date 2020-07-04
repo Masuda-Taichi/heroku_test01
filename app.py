@@ -15,21 +15,21 @@ app = Flask(__name__)
 # Flask では標準で Flask.secret_key を設定すると、sessionを使うことができます。この時、Flask では session の内容を署名付きで Cookie に保存します。
 app.secret_key = 'sunabakoza'
 
-# @app.route('/', methods=["GET", "POST"])
-# def index():
-#     conn = sqlite3.connect('niseco.db')
-#     c = conn.cursor()
-#     c.execute("select id,name from syouhin")
-#     comment_list = []
-#     for row in c.fetchall():
-#         comment_list.append({"id": row[0],"name": row[1]})
-
-#     c.close()
-#     return render_template('index.html', comment_list = comment_list)
-
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    return render_template('index.html')
+    conn = sqlite3.connect('niseco.db')
+    c = conn.cursor()
+    c.execute("select id,name from syouhin")
+    comment_list = []
+    for row in c.fetchall():
+        comment_list.append({"id": row[0],"name": row[1]})
+
+    c.close()
+    return render_template('index.html', comment_list = comment_list)
+
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
 
 @app.errorhandler(403)
 def mistake403(code):
